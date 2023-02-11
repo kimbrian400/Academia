@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         // calling the init function
         init();
 
-        getSystemSettings();
+     //   getSystemSettings();
         // Activating Course Fragment while the application runs for the first time
         getSupportFragmentManager().beginTransaction().replace(R.id.homePageFrameLayout, new CourseFragment()).commit();
 
@@ -129,11 +129,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Initializing the spinners
-        getCategories();
-        getPrice();
-        getDifficultyLevel();
-        getLanguage();
-        getRating();
+      //  getCategories();
+      //  getPrice();
+      //  getDifficultyLevel();
+      //  getLanguage();
+      //  getRating();
 
         // This is the onClick listener for the collapse filter view button
         closeFilterViewButton.setOnClickListener(new View.OnClickListener(){
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 bottomSheetBehavior.setState(bottomSheetBehavior.STATE_COLLAPSED);
-                filterCourse();
+               // filterCourse();
             }
         });
 
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    searchCourse();
+                  //  searchCourse();
                     return true;
                 }
                 return false;
@@ -203,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
     private void initializeCategorySpinner(final ArrayList<Category> mCategory) {
         categorySpinner = findViewById(R.id.filterCategorySpinner);
         categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mCategory);
@@ -274,6 +275,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     private void initializeRatingSpinner(final ArrayList<Rating> mRating){
         ratingSpinner = findViewById(R.id.filterRatingSpinner);
         ratingArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mRating);
@@ -316,6 +318,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
     private void getPrice() {
         // Making empty array of category
         final ArrayList<Price> mPrice = new ArrayList<>();
@@ -430,6 +434,8 @@ public class MainActivity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(searchStringInputField.getWindowToken(),0);
     }
 
+    **/
+
     // Reset Filter Page
     private void resetFilter(){
         categorySpinner.setSelection(0, true);
@@ -440,37 +446,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void getSystemSettings() {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-        Api api = retrofit.create(Api.class);
-        Call<SystemSettings> call = api.getSystemSettings();
-        call.enqueue(new Callback<SystemSettings>() {
-            @Override
-            public void onResponse(Call<SystemSettings> call, Response<SystemSettings> response) {
-                SystemSettings systemSettings = response.body();
-                Glide.with(getApplicationContext())
-                        .asBitmap()
-                        .load(systemSettings.getThumbnail())
-                        .into(applicationLogo);
+  //  private void getSystemSettings() {
+       // Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+       // Api api = retrofit.create(Api.class);
+       // Call<SystemSettings> call = api.getSystemSettings();
+       // call.enqueue(new Callback<SystemSettings>() {
+       //     @Override
+       //     public void onResponse(Call<SystemSettings> call, Response<SystemSettings> response) {
+       //         SystemSettings systemSettings = response.body();
+       //         Glide.with(getApplicationContext())
+         //               .asBitmap()
+           //             .load(systemSettings.getThumbnail())
+             //           .into(applicationLogo);
 
-                /*SETTING YOUTUBE API KEY TO SHARED PREF*/
-                SharedPreferences preferences = getApplicationContext().getSharedPreferences(Helpers.SHARED_PREF, 0);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("youtube_api_key", systemSettings.getYoutubeApiKey());
-                editor.commit();
-            }
+               // /*SETTING YOUTUBE API KEY TO SHARED PREF*/
+             //   SharedPreferences preferences = getApplicationContext().getSharedPreferences(Helpers.SHARED_PREF, 0);
+               // SharedPreferences.Editor editor = preferences.edit();
+               // editor.putString("youtube_api_key", systemSettings.getYoutubeApiKey());
+               // editor.commit();
+           // }
 
-            @Override
-            public void onFailure(Call<SystemSettings> call, Throwable t) {
+         //   @Override
+         //   public void onFailure(Call<SystemSettings> call, Throwable t) {
 
-            }
-        });
-    }
-
+       //     }
+      //  });
+  //  }
+/**
     public void searchCourse() {
         searchString = searchStringInputField.getText();
         getCourseBySearchString(searchString);
     }
+
+ **/
 
     public void showSearchBox(View view) {
         // Showing the search input field
@@ -502,6 +510,7 @@ public class MainActivity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(searchStringInputField.getWindowToken(),0);
     }
 
+    /**
     private void getCourseBySearchString(Editable searchString) {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         Api api = retrofit.create(Api.class);
@@ -531,9 +540,10 @@ public class MainActivity extends AppCompatActivity {
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(searchStringInputField.getWindowToken(),0);
     }
+    **/
 
     public void viewAllCourses(View view) {
-        filterCourse();
+        //filterCourse();
     }
 
     public FloatingActionButton getFloatingActionButton() {

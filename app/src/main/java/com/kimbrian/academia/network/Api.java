@@ -6,7 +6,6 @@ import com.kimbrian.academia.jsonSchemas.CategorySchema;
 import com.kimbrian.academia.jsonSchemas.CertificateAddonSchema;
 import com.kimbrian.academia.jsonSchemas.CourseDetailsSchema;
 import com.kimbrian.academia.jsonSchemas.CourseSchema;
-import com.kimbrian.academia.jsonSchemas.CouseSchema;
 import com.kimbrian.academia.jsonSchemas.LanguageSchema;
 import com.kimbrian.academia.jsonSchemas.LessonCompletionSchema;
 import com.kimbrian.academia.jsonSchemas.SectionSchema;
@@ -51,7 +50,7 @@ public interface Api {
 
     // Api call for fetching Category Wise Courses
     @GET("category_wise_course")
-    Call<List<CouseSchema>> getCourses(@Query("category_id") int categoryId);
+    Call<List<CourseSchema>> getCourses(@Query("category_id") int categoryId);
 
     // Api call for fetching Languages
     @GET("languages")
@@ -83,11 +82,11 @@ public interface Api {
 
     // Api call for Fetching My Courses
     @GET("my_courses")
-    Call<List<CouseSchema>> getMyCourses( @Query("auth_token") String authToken );
+    Call<List<CourseSchema>> getMyCourses( @Query("auth_token") String authToken );
 
     // Api call for Fetching My Wishlist
     @GET("my_wishlist")
-    Call<List<CouseSchema>> getMyWishlist( @Query("auth_token") String authToken );
+    Call<List<CourseSchema>> getMyWishlist( @Query("auth_token") String authToken );
 
     // Api call for Fetching My Wishlist
     @GET("toggle_wishlist_items")
@@ -103,7 +102,7 @@ public interface Api {
 
     // Api call for Fetching Course Details
     @GET("course_object_by_id")
-    Call<CouseSchema> getCourseObject(@Query("course_id") int courseId);
+    Call<CourseSchema> getCourseObject(@Query("course_id") int courseId);
 
     // Api call for Saving course progress with lesson completion status
     @GET("save_course_progress")
