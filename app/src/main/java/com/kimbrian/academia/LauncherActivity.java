@@ -12,14 +12,11 @@ public class LauncherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
-        new Handler().postDelayed(new Runnable(){
-            @Override
-            public void run() {
-                /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(LauncherActivity.this,MainActivity.class);
-                LauncherActivity.this.startActivity(mainIntent);
-                LauncherActivity.this.finish();
-            }
+        new Handler().postDelayed(() -> {
+            /* Create an Intent that will start the Menu-Activity. */
+            Intent mainIntent = new Intent(LauncherActivity.this,MainActivity.class);
+            LauncherActivity.this.startActivity(mainIntent);
+            LauncherActivity.this.finish();
         }, SPLASH_DISPLAY_LENGTH);
     }
 }
