@@ -1,21 +1,25 @@
-package com.kimbrian.academia.models;
+package com.kimbrian.academia.jsonSchemas;
 
-public class Language {
-    private int id;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+public class LanguageSchema {
+
+    @SerializedName("id")
+    @Expose
+    private Integer id;
+    @SerializedName("value")
+    @Expose
     private String value;
+    @SerializedName("displayedValue")
+    @Expose
     private String displayedValue;
 
-    public Language(int id, String value, String displayedValue) {
-        this.id = id;
-        this.value = value;
-        this.displayedValue = displayedValue;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -35,9 +39,4 @@ public class Language {
         this.displayedValue = displayedValue;
     }
 
-    @Override
-    public String toString() {
-        return getDisplayedValue();
-    }
 }
-

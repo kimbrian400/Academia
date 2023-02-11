@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.text.Editable;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -25,10 +26,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.kimbrian.academia.activities.CoursesActivity;
+import com.kimbrian.academia.fragments.AccountFragment;
 import com.kimbrian.academia.fragments.CourseFragment;
+import com.kimbrian.academia.fragments.MyCourseFragment;
+import com.kimbrian.academia.fragments.WishlistFragment;
+import com.kimbrian.academia.jsonSchemas.CategorySchema;
+import com.kimbrian.academia.jsonSchemas.CourseSchema;
+import com.kimbrian.academia.jsonSchemas.LanguageSchema;
+import com.kimbrian.academia.jsonSchemas.SystemSettings;
 import com.kimbrian.academia.models.Category;
 import com.kimbrian.academia.models.Course;
 import com.kimbrian.academia.models.DifficultyLevel;
@@ -36,10 +46,14 @@ import com.kimbrian.academia.models.Language;
 import com.kimbrian.academia.models.Price;
 import com.kimbrian.academia.models.Rating;
 import com.kimbrian.academia.network.Api;
+import com.kimbrian.academia.utils.Helpers;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
