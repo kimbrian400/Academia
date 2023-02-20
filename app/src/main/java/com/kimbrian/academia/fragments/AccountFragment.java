@@ -42,7 +42,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class AccountFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class AccountFragment extends Fragment  {
     Button signInButton;
     RelativeLayout signInPlaceholder, accountView;
     ImageView displayImageView;
@@ -51,7 +51,6 @@ public class AccountFragment extends Fragment implements SwipeRefreshLayout.OnRe
     private ProgressBar progressBar;
     View view;
     private Context mContext;
-    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Nullable
     @Override
@@ -59,7 +58,7 @@ public class AccountFragment extends Fragment implements SwipeRefreshLayout.OnRe
         view = inflater.inflate(R.layout.account_fragment, container, false);
         init(view);
        // initProgressBar(view);
-        initSwipeRefreshLayout(view);
+       // initSwipeRefreshLayout(view);
         if (isLoggedIn()){
             this.loggedInView();
         }else{
@@ -137,6 +136,7 @@ public class AccountFragment extends Fragment implements SwipeRefreshLayout.OnRe
         });
 
     }
+    /**
     private void initSwipeRefreshLayout(View view) {
         mSwipeRefreshLayout = view.findViewById(R.id.swipeRefresh);
         mSwipeRefreshLayout.setOnRefreshListener(this);
@@ -146,6 +146,7 @@ public class AccountFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 R.color.googleAccentColor3,
                 R.color.googleAccentColor4);
     }
+    **/
 
     /**
     // Initialize the progress bar
@@ -196,14 +197,14 @@ public class AccountFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 }else{
                     Toast.makeText(getContext(), "Please Logged In With Valid Credentials", Toast.LENGTH_SHORT).show();
                 }
-                mSwipeRefreshLayout.setRefreshing(false);
+               // mSwipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
             public void onFailure(Call<UserSchema> call, Throwable t) {
                 progressBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(getContext(), "An Error Occured", Toast.LENGTH_SHORT).show();
-                mSwipeRefreshLayout.setRefreshing(false);
+              //  mSwipeRefreshLayout.setRefreshing(false);
             }
         });
     }
@@ -232,8 +233,10 @@ public class AccountFragment extends Fragment implements SwipeRefreshLayout.OnRe
         startActivity(intent);
     }
 
+    /**
     @Override
     public void onRefresh() {
         getUserDataFromAPI();
     }
+    **/
 }
