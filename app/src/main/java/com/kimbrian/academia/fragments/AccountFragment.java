@@ -165,8 +165,8 @@ public class AccountFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
     // it will show the looged out view
     private void loggedOutView() {
-        signInPlaceholder.setVisibility(View.VISIBLE);
-        accountView.setVisibility(View.GONE);
+        signInPlaceholder.setVisibility(View.GONE);
+        accountView.setVisibility(View.VISIBLE);
     }
 
     // get user details
